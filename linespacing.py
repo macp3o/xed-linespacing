@@ -4,9 +4,9 @@ UI_XML = """<ui>
 <menubar name="MenuBar">
     <menu name="ToolsMenu" action="Tools">
       <placeholder name="ToolsOps_3">
-        <menuitem name="LineSpacingAction0" action="LineSpacingAction0"/>
-        <menuitem name="LineSpacingAction1" action="LineSpacingAction1"/>
         <menuitem name="LineSpacingAction2" action="LineSpacingAction2"/>
+        <menuitem name="LineSpacingAction1" action="LineSpacingAction1"/>
+        <menuitem name="LineSpacingAction0" action="LineSpacingAction0"/>
       </placeholder>
     </menu>
 </menubar>
@@ -23,15 +23,15 @@ class LineSpacing(GObject.Object, Xed.WindowActivatable):
         manager = self.window.get_ui_manager()
         self._actions = Gtk.ActionGroup("LineSpacingActions")
         self._actions.add_actions([
-            ('LineSpacingAction0', Gtk.STOCK_INFO, "Reset Line spacing", 
-                "<Control><Alt>0", "Reset Line spacing", 
-                self.on_linespacing_action_activate0),
-            ('LineSpacingAction1', Gtk.STOCK_INFO, "Decrease Line spacing", 
-                "<Control><Alt>8", "Decrease Line spacing", 
-                self.on_linespacing_action_activate1),
-            ('LineSpacingAction2', Gtk.STOCK_INFO, "Increase Line spacing", 
-                "<Control><Alt>9", "Increase Line spacing", 
+            ('LineSpacingAction2', Gtk.STOCK_INFO, "Larger Line Spacing", 
+                "<Control><Alt>9", "Larger Line Spacing", 
                 self.on_linespacing_action_activate2),
+            ('LineSpacingAction1', Gtk.STOCK_INFO, "Smaller Line Spacing", 
+                "<Control><Alt>8", "Smaller Line spacing", 
+                self.on_linespacing_action_activate1),
+            ('LineSpacingAction0', Gtk.STOCK_INFO, "Reset Line Spacing", 
+                "<Control><Alt>0", "Reset Line Spacing",
+                self.on_linespacing_action_activate0),
         ])
         manager.insert_action_group(self._actions)
         self._ui_merge_id = manager.add_ui_from_string(UI_XML)
